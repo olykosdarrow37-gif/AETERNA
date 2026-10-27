@@ -1,0 +1,37 @@
+{
+  "name": "man-of-tomorrow-pc",
+  "version": "1.0.0",
+  "description": "BEWARE THE MAN OF TOMORROW! – desktop app",
+  "author": "you",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.scoiatael.player.desktop",
+    "productName": "Man of Tomorrow",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "www/**/*"],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Man-of-Tomorrow-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Man-of-Tomorrow-Portable-${version}.${ext}"
+    }
+  }
+}
